@@ -1,0 +1,30 @@
+{
+  "name": "chess-insights-server",
+  "version": "1.0.0",
+  "description": "Backend REST API and Intelligence Analytics Engine for Chess Insights",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node tests/analyzer.test.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "chess.js": "^0.13.4",
+    "axios": "^1.7.9",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "chess",
+    "api",
+    "analytics",
+    "express",
+    "mongoose"
+  ],
+  "author": "NullPointer Team",
+  "license": "MIT"
+}

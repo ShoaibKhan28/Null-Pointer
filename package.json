@@ -1,0 +1,28 @@
+{
+  "name": "chess-insights-root",
+  "version": "1.0.0",
+  "description": "Chess Insights - Automated Opponent Intelligence & Pre-Match Preparation Platform (MERN)",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
+    "start:server": "npm run start --prefix server",
+    "start:client": "npm run dev --prefix client",
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix client",
+    "test:server": "npm run test --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "keywords": [
+    "chess",
+    "analytics",
+    "opponent-scouting",
+    "mern",
+    "stockfish",
+    "chesscom",
+    "lichess"
+  ],
+  "author": "NullPointer Team (Build with Bharat 2.0)",
+  "license": "MIT"
+}
