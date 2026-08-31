@@ -172,62 +172,79 @@ Compare two players head-to-head across ratings, Stalker scores, time discipline
 📁 Project Structure
 
 chess-insights/
-├── package.json                   # Root npm workspace orchestration
-├── README.md                      # Comprehensive project documentation
-├── .env.example                   # Root environment variables template
-├── server/                        # Node.js & Express REST API
+├── package.json
+├── README.md
+├── .env.example
+│
+├── server/
 │   ├── package.json
 │   ├── .env.example
+│   │
 │   ├── src/
 │   │   ├── config/
-│   │   │   └── db.js              # MongoDB Mongoose connection + In-memory fallback
+│   │   │   └── db.js
+│   │   │
 │   │   ├── models/
-│   │   │   ├── Player.js          # Player profile schema
-│   │   │   ├── Game.js            # Match record schema
-│   │   │   └── Analysis.js        # Intelligence report schema
+│   │   │   ├── Player.js
+│   │   │   ├── Game.js
+│   │   │   └── Analysis.js
+│   │   │
 │   │   ├── core/
-│   │   │   ├── Player.js          # OOP Base Player Class
-│   │   │   ├── ChessComPlayer.js  # Chess.com Subclass
-│   │   │   ├── LichessPlayer.js   # Lichess Subclass
-│   │   │   ├── Analyzer.js        # Core Analytics Engine
-│   │   │   ├── Database.js        # DB Repository Layer
-│   │   │   └── AppService.js      # Pipeline Orchestrator
+│   │   │   ├── Player.js
+│   │   │   ├── ChessComPlayer.js
+│   │   │   ├── LichessPlayer.js
+│   │   │   ├── Analyzer.js
+│   │   │   ├── Database.js
+│   │   │   └── AppService.js
+│   │   │
 │   │   ├── controllers/
 │   │   │   ├── playerController.js
 │   │   │   ├── analysisController.js
 │   │   │   ├── gamesController.js
 │   │   │   └── compareController.js
+│   │   │
 │   │   ├── routes/
-│   │   │   └── apiRoutes.js       # Express Router
+│   │   │   └── apiRoutes.js
+│   │   │
 │   │   ├── services/
 │   │   │   └── sampleDataService.js
+│   │   │
 │   │   ├── utils/
-│   │   │   ├── chessEco.js        # Opening ECO database & counter strategies
-│   │   │   └── tacticalPatterns.js# Trap detectors & tactical blunders
-│   │   └── server.js              # Express app bootstrap
+│   │   │   ├── chessEco.js
+│   │   │   └── tacticalPatterns.js
+│   │   │
+│   │   └── server.js
+│   │
 │   └── tests/
-│       └── analyzer.test.js       # Unit & analytics test suite
-└── client/                        # React + Vite + Tailwind CSS Frontend
+│       └── analyzer.test.js
+│
+└── client/
     ├── package.json
     ├── vite.config.js
     ├── index.html
     ├── tailwind.config.js
     ├── postcss.config.js
+    │
     └── src/
-        ├── App.jsx                # Main SPA Coordinator
-        ├── main.jsx               # React DOM Entry
-        ├── index.css              # Dark theme CSS & neon radial styling
+        ├── App.jsx
+        ├── main.jsx
+        ├── index.css
+        │
         ├── api/
-        │   └── apiService.js      # REST API client
+        │   └── apiService.js
+        │
         ├── context/
-        │   └── ChessContext.jsx   # Global State Provider
+        │   └── ChessContext.jsx
+        │
         ├── utils/
-        │   └── chessHelpers.js    # FEN parsers & piece graphics
+        │   └── chessHelpers.js
+        │
         └── components/
             ├── layout/
-            │   ├── Header.jsx     # Platform switcher, omni-search, theme toggle
-            │   ├── Sidebar.jsx    # Navigation links & upgrade badge
-            │   └── Footer.jsx     # Hackathon footer & community links
+            │   ├── Header.jsx
+            │   ├── Sidebar.jsx
+            │   └── Footer.jsx
+            │
             ├── dashboard/
             │   ├── PlayerOverviewCard.jsx
             │   ├── StalkerScoreGauge.jsx
@@ -239,17 +256,389 @@ chess-insights/
             │   ├── RepertoireHeatmap.jsx
             │   ├── PsychologicalRadar.jsx
             │   └── RecentGamesTable.jsx
+            │
             ├── game-review/
-            │   └── InteractiveChessboard.jsx # Playable board with eval curve
+            │   └── InteractiveChessboard.jsx
+            │
             ├── twin-arena/
-            │   └── PlayTwinModal.jsx         # Live match vs AI Twin
+            │   └── PlayTwinModal.jsx
+            │
             └── compare/
-                └── ComparePlayersModal.jsx   # Side-by-side scout
+                └── ComparePlayersModal.jsx
+
+Directory Overview
+
+Directory
+
+Purpose
+
+server/
+
+Node.js and Express backend
+
+server/src/core/
+
+Core OOP classes and analysis engine
+
+server/src/models/
+
+Mongoose database models
+
+server/src/controllers/
+
+API request controllers
+
+server/src/routes/
+
+Express API routes
+
+server/src/services/
+
+Supporting backend services
+
+server/src/utils/
+
+Chess and tactical utilities
+
+server/tests/
+
+Backend tests
+
+client/
+
+React frontend
+
+client/src/components/
+
+Reusable UI components
+
+client/src/api/
+
+Frontend API communication
+
+client/src/context/
+
+Global application state
+
+client/src/utils/
+
+Frontend helper functions
 
 🚀 Getting Started
 
 Prerequisites
 
+
+
+♞ Chess Insights
+Analyze. Understand. Outplay.
+Turn raw game archives into actionable opponent scouting reports and behavioral insights.
+
+
+
+
+
+🏆 Overview
+Chess Insights is an automated pre-match intelligence and opponent scouting platform designed for competitive chess players. While standard chess platforms excel at analyzing isolated post-game moves, pre-match preparation is currently fragmented across hundreds of past matches.
+
+Chess Insights bridges this gap by shifting the paradigm from isolated post-game analysis to multi-game behavioral intelligence. It autonomously ingests a player's public match history (from Chess.com and Lichess), parses PGN records, detects psychological and tactical vulnerabilities under time pressure, generates a 0–100 Stalker Exploitability Score, and builds an interactive "How to Beat Them" preparation checklist.
+
+🛠️ Technology Stack
+Frontend: React, Vite, Tailwind CSS
+
+Backend: Node.js, Express
+
+Database: MongoDB with Mongoose
+
+Chess Engine: Stockfish.wasm
+
+Data Sources: Chess.com and Lichess public game data
+
+Testing: Jest
+
+👥 Team
+Prabhav Agarwal (Team Lead)
+
+Ayush Singh
+
+Sraddha Mishra
+
+Shoaib Khan
+
+⚡ Intelligence Pipeline
+┌─────────────┐      ┌─────────────┐      ┌─────────────┐      ┌─────────────┐      ┌─────────────┐
+│  01 SEARCH  │ ───> │  02 FETCH   │ ───> │  03 PARSE   │ ───> │ 04 ANALYZE  │ ───> │ 05 INSIGHTS │
+│ Input user  │      │ Public APIs │      │ PGN, Clocks │      │ Stats Engine│      │ Dashboard   │
+└─────────────┘      └─────────────┘      └─────────────┘      └─────────────┘      └─────────────┘
+Search: Search any username across Chess.com, Lichess, or sample Grandmasters.
+
+Fetch: Asynchronously fetch live profile ratings and game archives.
+
+Parse: Extract move SAN trees, ECO opening codes, clock times, accuracy ratings, and result details.
+
+Analyze: Calculate win/loss rates by color, detect tactical traps, quantify time pressure collapses (<1 min), track win/loss tilt streaks, and compute the composite Stalker Matrix Score.
+
+Insights: Render a dark-themed analytics dashboard featuring an interactive chessboard, AI Twin sparring bot, and side-by-side player comparisons.
+
+🏗️ System Architecture & OOP Design
+The backend is architected following a modular Object-Oriented Programming (OOP) pattern:
+
+                      ┌──────────────────────┐
+                      │     Class Player     │
+                      ├──────────────────────┤
+                      │ - username           │
+                      │ - platform           │
+                      │ - ratings            │
+                      │ - stats              │
+                      │ + fetchProfile()     │
+                      │ + getStats()         │
+                      └──────────┬───────────┘
+                                 │
+                 ┌───────────────┴───────────────┐
+                 ▼                               ▼
+    ┌─────────────────────────┐    ┌─────────────────────────┐
+    │  Class ChessComPlayer   │    │   Class LichessPlayer   │
+    ├─────────────────────────┤    ├─────────────────────────┤
+    │ + fetchArchives()       │    │ + exportGames()         │
+    │ + formatGames()         │    │ + formatGames()         │
+    └─────────────────────────┘    └─────────────────────────┘
+                 │                               │
+                 └───────────────┬───────────────┘
+                                 ▼
+                      ┌──────────────────────┐
+                      │    Class Analyzer    │
+                      ├──────────────────────┤
+                      │ - player             │
+                      │ - games[]            │
+                      │ + analyzeOpenings()  │
+                      │ + analyzeTime()      │
+                      │ + analyzeWeaknesses()│
+                      │ + generateMatrixScore│
+                      │ + generateAiTwin()   │
+                      └──────────┬───────────┘
+                                 │
+                                 ▼
+                      ┌──────────────────────┐
+                      │    Class Database    │
+                      ├──────────────────────┤
+                      │ - playerCollection   │
+                      │ - gameCollection     │
+                      │ - analysisCollection │
+                      └──────────────────────┘
+Core OOP Classes:
+Player (server/src/core/Player.js): Base abstract entity defining attributes (username, avatar, country, ratings, stats) and polymorphic interface.
+
+ChessComPlayer (server/src/core/ChessComPlayer.js): Subclass handling Chess.com REST API queries, monthly archive batches, and PGN formatting.
+
+LichessPlayer (server/src/core/LichessPlayer.js): Subclass consuming Lichess NDJSON streams, evaluations, and clock metadata.
+
+Analyzer (server/src/core/Analyzer.js): Behavioral intelligence engine analyzing openings, time brackets, endgame conversions, tactical blunder tendencies, and Stalker Scores.
+
+Database (server/src/core/Database.js): OOP persistence layer bridging Mongoose models (Player, Game, Analysis) with an automated high-speed in-memory cache fallback.
+
+AppService (server/src/core/AppService.js): High-level coordinator managing ingestion pipelines and head-to-head comparisons.
+
+🌟 Features
+1. 🎯 Stalker / Matrix Exploitability Score (0–100)
+A predictive gauge assessing how easily an opponent can be exploited based on 5 weighted metrics:
+
+Time Trouble Index (weight: 25%)
+
+Critical Mistakes & Blunder Rate (weight: 25%)
+
+Endgame Handling Vulnerability (weight: 20%)
+
+Win Streak Resilience & Tilt (weight: 15%)
+
+Opening Accuracy & Repertoire Depth (weight: 15%)
+
+2. 🛡️ "How to Beat Them" Actionable Checklist
+Weaknesses Breakdown: Quantified loss rates in specific positions (e.g. Endgame Queen vs Rook: 53.3% Lost, Time Pressure <1 min: 52.4% Lost, Defensive Mistakes: 43.8% Lost).
+
+Strengths Breakdown: Quantified win rates (e.g. Middle Game: 80% Won, Attacking Play: 62.5% Won).
+
+Dedicated Strategy Tabs: Concrete tactical checklists for playing as White or Black.
+
+3. 🤖 Sparring Arena vs Opponent's AI Twin
+Play an interactive chess match in the browser against an AI bot configured with the opponent's exact opening repertoire, tactical aggression level, and blunder probabilities.
+
+Real-time bot thought stream showing simulated psychological evaluations.
+
+4. ⏱️ Time Management & Scramble Analysis
+Granular breakdown across 4 clock pressure brackets: < 1 min, 1–5 min, 5–15 min, and > 15 min.
+
+Flags sudden win-rate drops in time scrambles.
+
+5. ♟️ Opening Repertoire & 8x8 Board Heatmap
+Visualizes board square control density on an 8x8 matrix.
+
+Interactive repertoire table with games played, win rate percentage, and performance delta against player average (+18, +12, -5, etc.).
+
+6. 🔍 Interactive Game Review
+Playable 8x8 chessboard with SVG piece graphics, click/drag moves, and move navigation controls (⏮ First, ◀ Prev, ▶ Next, ⏭ Last, Auto-Play).
+
+Advantage evaluation curve with centipawn accuracy.
+
+Automated move annotations (Mistake, Blunder, Inaccuracy, Best Move).
+
+7. 👥 Dual Player Scout Comparison
+Compare two players head-to-head across ratings, Stalker scores, time discipline, and psychological aggression profiles.
+
+📁 Project Structure
+chess-insights/
+|
++-- package.json
++-- README.md
++-- .env.example
+|
++-- server/
+|   |
+|   +-- package.json
+|   +-- .env.example
+|   |
+|   +-- src/
+|   |   |
+|   |   +-- config/
+|   |   |   +-- db.js
+|   |   |
+|   |   +-- models/
+|   |   |   +-- Player.js
+|   |   |   +-- Game.js
+|   |   |   +-- Analysis.js
+|   |   |
+|   |   +-- core/
+|   |   |   +-- Player.js
+|   |   |   +-- ChessComPlayer.js
+|   |   |   +-- LichessPlayer.js
+|   |   |   +-- Analyzer.js
+|   |   |   +-- Database.js
+|   |   |   +-- AppService.js
+|   |   |
+|   |   +-- controllers/
+|   |   |   +-- playerController.js
+|   |   |   +-- analysisController.js
+|   |   |   +-- gamesController.js
+|   |   |   +-- compareController.js
+|   |   |
+|   |   +-- routes/
+|   |   |   +-- apiRoutes.js
+|   |   |
+|   |   +-- services/
+|   |   |   +-- sampleDataService.js
+|   |   |
+|   |   +-- utils/
+|   |   |   +-- chessEco.js
+|   |   |   +-- tacticalPatterns.js
+|   |   |
+|   |   +-- server.js
+|   |
+|   +-- tests/
+|       +-- analyzer.test.js
+|
++-- client/
+    |
+    +-- package.json
+    +-- vite.config.js
+    +-- index.html
+    +-- tailwind.config.js
+    +-- postcss.config.js
+    |
+    +-- src/
+        |
+        +-- App.jsx
+        +-- main.jsx
+        +-- index.css
+        |
+        +-- api/
+        |   +-- apiService.js
+        |
+        +-- context/
+        |   +-- ChessContext.jsx
+        |
+        +-- utils/
+        |   +-- chessHelpers.js
+        |
+        +-- components/
+            |
+            +-- layout/
+            |   +-- Header.jsx
+            |   +-- Sidebar.jsx
+            |   +-- Footer.jsx
+            |
+            +-- dashboard/
+            |   +-- PlayerOverviewCard.jsx
+            |   +-- StalkerScoreGauge.jsx
+            |   +-- AiTwinCard.jsx
+            |   +-- HowToBeatCard.jsx
+            |   +-- FrequentRivalsCard.jsx
+            |   +-- TimeManagementSection.jsx
+            |   +-- TrapsAndTacticsSection.jsx
+            |   +-- RepertoireHeatmap.jsx
+            |   +-- PsychologicalRadar.jsx
+            |   +-- RecentGamesTable.jsx
+            |
+            +-- game-review/
+            |   +-- InteractiveChessboard.jsx
+            |
+            +-- twin-arena/
+            |   +-- PlayTwinModal.jsx
+            |
+            +-- compare/
+                +-- ComparePlayersModal.jsx
+Directory Overview
+Directory	Purpose
+server/	Node.js and Express backend
+server/src/core/	Core OOP classes and analysis engine
+server/src/models/	Mongoose database models
+server/src/controllers/	API request controllers
+server/src/routes/	Express API routes
+server/src/services/	Supporting backend services
+server/src/utils/	Chess and tactical utilities
+server/tests/	Backend tests
+client/	React frontend
+client/src/components/	Reusable UI components
+client/src/api/	Frontend API communication
+client/src/context/	Global application state
+client/src/utils/	Frontend helper functions
+🚀 Getting Started
+Prerequisites
+Node.js: v18+ (Tested on v25.2.1)
+
+npm: v9+ (Tested on v11.6.2)
+
+MongoDB (Optional): If MongoDB is not running locally, the system automatically runs in Resilient In-Memory Mode without crashing.
+
+1. Clone the Repository and Install Dependencies
+# Clone the repository
+git clone https://github.com/nullpointer/chess-insights.git
+cd chess-insights
+
+# Install dependencies across root, server, and client
+npm run install:all
+2. Configure Environment Variables
+Create .env in server/ (or copy from .env.example):
+
+PORT=5000
+MONGODB_URI=mongodb://127.0.0.1:27017/chess_insights
+NODE_ENV=development
+CLIENT_URL=http://localhost:5173
+3. Start the Development Servers
+# Concurrently launch Express Backend (Port 5000) and Vite Frontend (Port 5173)
+npm run dev
+Visit http://localhost:5173 in your browser!
+
+4. Run the Tests
+npm run test:server
+📡 REST API
+The backend exposes REST endpoints for player discovery, game retrieval, behavioral analysis, saved reports, and player comparison.
+
+Method	Endpoint	Description
+GET	/api/health	Health check & database connection status
+GET	/api/players/search?username=:u&platform=:p	Live search for player profile across platforms
+GET	/api/analysis/:platform/:username	Generate full behavioral report & Stalker Score
+GET	/api/analysis/saved	Retrieve cached scouting analyses from MongoDB
+GET	/api/games/:platform/:username?limit=40	Retrieve parsed game records for a player
+POST	/api/compare	Compare two players side-by-side
 Node.js: v18+ (Tested on v25.2.1)
 
 npm: v9+ (Tested on v11.6.2)
